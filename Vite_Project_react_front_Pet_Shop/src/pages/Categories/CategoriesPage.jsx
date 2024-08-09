@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 import styles from "./CategoriesPage.module.css";
 import Breadcrumbs from "../../components/breadCrumbs/BreadCrumbs";
+import API_URL from "../../utils/api"
 
 export default function CategoriesPage() {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,7 @@ export default function CategoriesPage() {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3333/categories/all"
+          `${API_URL}/categories/all`
         );
         setCategories(response.data);
       } catch (error) {

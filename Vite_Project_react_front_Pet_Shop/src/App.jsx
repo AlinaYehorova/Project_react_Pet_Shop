@@ -18,8 +18,8 @@ function App() {
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
-      <div className="container">
         <Header />
+      <div className="container">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="categories" element={<CategoriesPage />} />

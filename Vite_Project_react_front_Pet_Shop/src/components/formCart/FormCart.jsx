@@ -34,6 +34,7 @@ function FormCart({ orderData, form = {}, onInputChange }) {
         setTimeout(() => {
           setShowAlert(false);
         }, 3000);
+        handlePlaceOrder();
       } catch (error) {
         console.error('Error submitting form', error);
       } finally {
@@ -41,11 +42,6 @@ function FormCart({ orderData, form = {}, onInputChange }) {
       }
     };
   
-  
-    const nameValue = form?.name || "";
-    const phoneValue = form?.phone || "";
-    const emailValue = form?.email || "";
-
     function handlePlaceOrder() {
       dispatch(
         openModal({title: "Congratulations!"})
@@ -53,10 +49,14 @@ function FormCart({ orderData, form = {}, onInputChange }) {
       setTimeout(() => {dispatch(clearCart())}, 1000) 
     }
   
+    const nameValue = form?.name || "";
+    const phoneValue = form?.phone || "";
+    const emailValue = form?.email || "";
+
     return (
       <div className={styles.Form_form}>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField
+          <TextField 
             {...register("name", {
               required: "Name is required",
               minLength: {
@@ -73,6 +73,9 @@ function FormCart({ orderData, form = {}, onInputChange }) {
             value={nameValue}
             onChange={onInputChange}
             name="name"
+            FormHelperTextProps={{
+              style: { fontSize: "20px" }, // Размер текста ошибки
+            }}
           />
           <TextField
             {...register("phone", {
@@ -91,6 +94,9 @@ function FormCart({ orderData, form = {}, onInputChange }) {
             value={phoneValue}
             onChange={onInputChange}
             name="phone"
+            FormHelperTextProps={{
+              style: { fontSize: "20px" }, // Размер текста ошибки
+            }}
           />
           <TextField
             {...register("email", {
@@ -109,10 +115,12 @@ function FormCart({ orderData, form = {}, onInputChange }) {
             value={emailValue}
             onChange={onInputChange}
             name="email"
+            FormHelperTextProps={{
+              style: { fontSize: "20px" }, // Размер текста ошибки
+            }}
           />
   
           <Button
-            onClick={handlePlaceOrder}
             className={styles.btnCartForm}
             type="submit"
             variant="contained"

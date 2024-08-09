@@ -14,7 +14,8 @@ export default function Header() {
 
   return (
     <header>
-      <Link style={{ margin: 0 }} to="/">
+      <div className="container" style={{width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "30px clamp(15px, 3.8vw, 40px) 28px "}}>
+      <Link style={{ margin: 0, height: "fit-content" }} to="/">
         <img src={logo} alt="logo" className={styles.Header_logo} />
       </Link>
       <nav>
@@ -37,6 +38,7 @@ export default function Header() {
       {items.length > 0 && <p className={styles.Header_cartTotalQuantity}>{totalQuantity}</p>}
         <img src={cartIcon} alt="cart" className={styles.Header_cart} />
       </Link>
+      </div>
     </header>
   );
 }

@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Filter.module.css";
 import checkbox from "../../assets/checkbox.svg";
 import checkedImg from "../../assets/checked.svg";
@@ -56,8 +56,8 @@ const Filter = ({ includedDiscount }) => {
           onChange={handleChange}
         />
       </div>
-      <div className={styles.Filter_includeDiscount_box}>
         {includedDiscount !== "off" && (
+      <div className={styles.Filter_includeDiscount_box}>
           <label className={styles.Filter_includeDiscount_label}>
             Include discount
             <input
@@ -77,8 +77,8 @@ const Filter = ({ includedDiscount }) => {
               alt="checkbox"
             />
           </label>
-        )}
       </div>
+        )}
       <div
         className={`${styles.Filter_sortType_box} ${
           showDropdown ? styles.Filter_select_open : ""

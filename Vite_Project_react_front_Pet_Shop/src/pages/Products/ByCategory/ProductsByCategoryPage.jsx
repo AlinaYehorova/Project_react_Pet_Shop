@@ -8,6 +8,7 @@ import BreadCrumbs from "../../../components/breadCrumbs/BreadCrumbs";
 import NotFoundPage from "../../NotFound/NotFoundPage";
 import sortProducts from "../../../services/filtredProducts";
 import Filter from "../../../components/filter/filter";
+import API_URL from "../../../utils/api"
 
 export default function ProductsByCategoryPage() {
   const [searchParams] = useSearchParams();
@@ -21,7 +22,7 @@ export default function ProductsByCategoryPage() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`http://localhost:3333/categories/${categoryId}`)
+      .get(`${API_URL}/categories/${categoryId}`)
       .then((response) => {
         console.log(response.data);
         if (response.data.status !== "ERR") {

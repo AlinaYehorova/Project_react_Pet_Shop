@@ -7,6 +7,7 @@ import { addToCart } from "../../../redux/cartSlice";
 import BreadCrumbs from "../../../components/breadCrumbs/BreadCrumbs";
 import sortProducts from "../../../services/filtredProducts";
 import Filter from "../../../components/filter/filter";
+import API_URL from "../../../utils/api"
 
 export default function DiscountedProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -23,7 +24,7 @@ export default function DiscountedProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3333/products/all");
+        const response = await axios.get(`${API_URL}/products/all`);
         const discountedProducts = response.data.filter(product => product.discont_price !== null);
         setProducts(discountedProducts);
       } catch (error) {
@@ -59,6 +60,7 @@ export default function DiscountedProductsPage() {
             ))
           ) : (
             <p>No products found</p>
+            
           )}
       </div>
     </div>

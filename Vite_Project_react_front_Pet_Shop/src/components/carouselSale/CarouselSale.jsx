@@ -10,6 +10,7 @@ import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import API_URL from "../../utils/api"
 
 export default function CarouselSale() {
   const [products, setProducts] = useState([]);
@@ -32,7 +33,7 @@ export default function CarouselSale() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3333/products/all");
+        const response = await axios.get(`${API_URL}/products/all`);
         setProducts(response.data);
       } catch (error) {
         console.error(error);

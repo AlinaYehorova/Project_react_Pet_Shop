@@ -20,7 +20,7 @@
     width: 99%;
     opacity: 0;
     filter: blur(20px);
-    animation: fadelnBlur 2.5s forwards ease-in;
+    animation: fadelnBlur 2s forwards ease-in;
 }
 
 @keyframes fadelnBlur {

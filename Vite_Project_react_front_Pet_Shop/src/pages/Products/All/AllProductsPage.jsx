@@ -7,6 +7,7 @@ import BreadCrumbs from "../../../components/breadCrumbs/BreadCrumbs";
 import Filter from "../../../components/filter/filter";
 import sortProducts from "../../../services/filtredProducts";
 import ProductCard from "../../../components/productCard/ProductCard";
+import API_URL from "../../../utils/api"
 
 export default function AllProductsPage() {
   const [searchParams] = useSearchParams();
@@ -16,7 +17,7 @@ export default function AllProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:3333/products/all");
+        const response = await axios.get(`${API_URL}/products/all`);
         setProducts(response.data);
       } catch (error) {
         console.error(error);

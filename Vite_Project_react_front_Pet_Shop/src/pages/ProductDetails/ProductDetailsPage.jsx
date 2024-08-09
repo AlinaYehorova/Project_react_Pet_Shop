@@ -7,6 +7,7 @@ import { addToCart } from "./../../redux/cartSlice";
 import { useDispatch } from "react-redux";
 import Breadcrumbs from "../../components/breadCrumbs/BreadCrumbs";
 import NotFoundPage from "../NotFound/NotFoundPage";
+import API_URL from "../../utils/api"
 
 export default function ProductDetailsPage() {
   const { productId } = useParams();
@@ -21,13 +22,13 @@ export default function ProductDetailsPage() {
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`http://localhost:3333/products/${productId}`)
+      .get(`${API_URL}/products/${productId}`)
       .then((response) => {
         if (typeof response.data[0] === "object") {
           setProduct(response.data[0]);
           axios
             .get(
-              `http://localhost:3333/categories/${response.data[0].categoryId}`
+              `${API_URL}/categories/${response.data[0].categoryId}`
             )
             .then((res) => {
               setCategoryName(res.data.category.title);
